@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static_style', path='style.css')}}">
+    </head>
+    <body>
+        <br />
+        <br />
+        {% if request.path == '/movies-table/' %}
+            <h2>Movies Table</h2>
+        {% endif %}
+        {% if request.path == '/actors-table/' %}
+            <h2>Actors Table</h2>
+        {% endif %}
+        {% if request.path == '/directors-table/' %}
+            <h2>Directors Table</h2>
+        {% endif %}
+        {% if request.path == '/movies-with-dir-table/' %}
+            <h2>Movies with Directors Table</h2>
+        {% endif %}
+        <br /> 
+        <table class="align">
+            <tr>
+                {% if request.path == '/movies-table/' %}
+                    <th>Movie</th>
+                    <th>Year of release</th>
+                {% endif %}
+                {% if request.path == '/actors-table/' %}
+                    <th>Actor</th>
+                    <th>Year of birth</th>
+                    <th>Sex</th>
+                {% endif %}
+                {% if request.path == '/directors-table/' %}
+                    <th>Director</th>
+                    <th>Year of birth</th>
+                {% endif %}
+                {% if request.path == '/movies-with-dir-table/' %}
+                    <th>Movies</th>
+                    <th>Year of release</th>
+                    <th>Director</th>
+                {% endif %}               
+<!--            {% for movie in movies_data if movie[3] is not number %}
+                    {% for movie in movies_data if movie[3] is not none %}
+                        {% if loop.first %}
+                        <th>Director</th>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %} -->
+            </tr>
+            {% for movie in movies_data %}            
+            <tr>
+                <td>{{movie[1]}}</td>
+                <td>{{movie[2]}}</td>
+                {% if request.path == '/movies-with-dir-table/' %}
+                    <td>{{movie[3]}}</td>
+                {% endif %}
+                {% if request.path == '/actors-table/' %}
+                    <td>{{movie[3]}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/" class="center"><p><< Go back</p></a>
+    </body>
+</html>
+ 
+
+<!-- 
+Movies Table Template
+(1, 'Titanic', 1997, 1)
+(10, 'Wonder Woman', 2017, 4)
+(11, 'Avatar', 2009, 1)
+(12, 'Aliens', 1986, 1)
+(13, 'Inception', 2010, 3)
+(14, 'Terminator', 1984, 1)
+(15, 'Cleopatra', 2023, 4)
+(16, 'Eternals', 2021, 5)
+(17, 'The Dark Knight', 2008, 3)
+(18, 'Lost In Translation', 1997, 6)
+(19, 'On the Rocks', 2020, 6)
+(20, 'The Virgin Suicides', 1999, 6)
+(21, 'Broken Flowers', 2005, 7) 
+-->

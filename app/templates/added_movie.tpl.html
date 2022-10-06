@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static_style', path='style.css')}}">
+    </head>
+    <body>
+        <br />
+        <br /> 
+        <h2>Add a movie</h2>
+        <br />
+        <br /> 
+        <div class="form-align">
+            <form action="{{ url_for('add_new_movie') }}" method="post">
+                <div class="form-item">
+                    <label for="movietitle" class="form-label">Movie Title:</label>
+                    <input type="text" class="form-field" name="movietitle" placeholder=" Enter title of movie">
+                </div>
+                <div class="form-item">
+                    <label for="releaseyear" class="form-label">Release Year:</label>
+                    <input type="text" class="form-field" name="releaseyear" placeholder=" Enter a year of release">
+                </div>
+                <div class="form-item">
+                    <label for="directorSelect" class="form-label">Pick a director:</label>
+                    <select name="directorSelect" class="form-field">
+                    {% for director in data_dir %}
+                        <option value="{{director[0]}}">{{director[1]}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label for="actorSelect" class="form-label">Pick the main actor:</label>
+                    <select name="actorSelect" class="form-field">
+                    {% for actor in data_act %}
+                        <option value="{{actor[0]}}">{{actor[1]}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <a class="button-set cancel" id="cancel" href="{{ url_for('list_movie_table') }}" role="button">Cancel</a>
+                <button type="submit" class="button-set">Submit</button>          
+            </form>
+        </div>
+        <a href="/" class="center"><p><< Go back</p></a>
+    </body>
+</html>

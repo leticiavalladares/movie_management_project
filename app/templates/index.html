@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static_style', path='style.css')}}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <br />
+                <br />
+                <h2>Movie Database Index</h2>
+                <br />
+                <br />
+                <div class="center">
+                    <a href="/movies"><p>JSON dump</p></a>                    
+                    <a href="/movies-table"><p>Only movies</p></a>
+                    <a href="/directors-table"><p>Only directors</p></a>
+                    <a href="/actors-table"><p>Only actors</p></a>
+                    <a href="/movies-with-dir-table"><p>Movies and directors</p></a>
+                    <a href="/add-movie"><p>Add movie</p></a>
+                    <a href="/add-director"><p>Add director</p></a>
+                    <a href="/add-actor"><p>Add actor</p></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
