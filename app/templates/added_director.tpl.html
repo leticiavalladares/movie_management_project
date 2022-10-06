@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static_style', path='style.css')}}">
+    </head>
+    <body>
+        {% if request.path == '/add-director/' %}
+            {% set page = 'add_new_director' %}
+        {% endif %}
+        {% if request.path == '/add-actor/' %}
+            {% set page = 'add_new_actor' %}
+        {% endif %}
+        <br />
+        <br />
+        {% if request.path == '/add-director/' %}
+            <h2>Add a director</h2>
+        {% endif %}
+        {% if request.path == '/add-actor/' %}
+            <h2>Add an actor</h2>
+        {% endif %}
+        <br />
+        <br /> 
+        <div class="form-align">
+            <form action="{{ url_for(page) }}" method="post">
+                <div class="form-item">
+                    {% if request.path == '/add-director/' %}
+                        <label for="name" class="form-label">Director's Name:</label>
+                    {% endif %}
+                    {% if request.path == '/add-actor/' %}
+                        <label for="name" class="form-label">Actor's Name:</label>
+                    {% endif %}
+                    <input type="text" class="form-field" name="name" placeholder=" Enter director's name">
+                </div>
+                <div class="form-item">
+                    <label for="year" class="form-label">Year of birth:</label>
+                    <input type="text" class="form-field" name="year" placeholder=" Enter a year of birth">
+                </div>
+                {% if request.path == '/add-actor/' %}
+                    <div class="form-item">
+                        <label for="sex" class="form-label">Sex:</label>
+                        <input type="radio" name="sex" value="F">
+                        <label for="sex" class="">F</label>
+                        <input type="radio" name="sex" value="M">
+                        <label for="sex" class="">M</label>
+                        <input type="radio" name="sex" value="D">
+                        <label for="sex" class="">D</label>  
+                    </div>
+                {% endif %}
+                {% if request.path == '/add-director/' %}
+                    <a class="button-set cancel" id="cancel" href="{{ url_for('list_director_table') }}" role="button">Cancel</a>
+                {% endif %}
+                {% if request.path == '/add-actor/' %}
+                    <a class="button-set cancel" id="cancel" href="{{ url_for('list_actor_table') }}" role="button">Cancel</a>
+                {% endif %}
+                <button type="submit" class="button-set">Submit</button>          
+            </form>
+        </div>
+        <a href="/" class="center"><p><< Go back</p></a>
+    </body>
+</html>
