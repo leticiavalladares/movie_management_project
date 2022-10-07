@@ -23,7 +23,7 @@ sleep 1m
 mysql -h ${db_endpoint} -u root -p${db_password} < ~/movie_management_project/database/create_movie_database.sql
 
 sudo sed -i "s/ENDPOINT_PLACEHOLDER/${db_endpoint}/g" ~/movie_management_project/app/main.py
-sudo sed -i "s/PASSWORD_PLACEHOLDER/${db_endpoint}/g" ~/movie_management_project/app/main.py
+sudo sed -i "s/PASSWORD_PLACEHOLDER/${db_password}/g" ~/movie_management_project/app/main.py
 
 # RUN MY CONTAINER - FLASK APP RUNNNING
 sudo docker run -d -p 80:80 --name=movie-mgmt -v ~/movie_management_project/app:/app movie-mgmt
