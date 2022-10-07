@@ -20,15 +20,6 @@ resource "aws_instance" "pub_server" {
                               db_password = jsondecode(nonsensitive(data.aws_secretsmanager_secret_version.movie_db_pw.secret_string))["movie_db_password"]
                             })
 
-  #user_data              = templatefile("${path.module}", vars)
-
-/*   connection {
-    type = "ssh"
-    user = "ec2-user"
-    private_key = file("/Users/leticia.valladares/.ssh/talent-academy-myec2")
-    host = var.my_local_pub_ip
-  } */
-
   tags = {
       Name = "pub-server"
   }

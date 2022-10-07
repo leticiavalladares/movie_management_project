@@ -37,46 +37,6 @@ resource "aws_security_group" "bastion_host_sg" {
   ]
 }
 
-# resource "aws_security_group" "app_sg" {
-#   name        = "app_sg"
-#   description = "Allow app access only from bastion host"
-#   vpc_id      = aws_vpc.vpc.id
-
-#   # INBOUND CONNECTIONS
-#   ingress {
-#     description = "Allow SSH into the EC2"
-#     from_port   = 22
-#     to_port     = 22
-#     protocol    = "tcp"
-#     security_groups = [aws_security_group.bastion_host_sg.id]
-#   }
-
-#   ingress {
-#     description = "Allow HTTP into the EC2"
-#     from_port   = 80
-#     to_port     = 80
-#     protocol    = "tcp"
-#     security_groups = [aws_security_group.bastion_host_sg.id]
-#   }
-
-#   # OUTBOUND CONNECTIONS
-#   egress {
-#     description = "Allow access to the world"
-#     from_port   = 0
-#     to_port     = 0
-#     protocol    = "-1" # TCP + UDP
-#     cidr_blocks = ["0.0.0.0/0"]
-#   }
-  
-#   depends_on = [
-#     aws_vpc.vpc,
-#     aws_subnet.priv_subnet_1,
-#     aws_subnet.priv_subnet_2,
-#     aws_subnet.pub_subnet,
-#     aws_security_group.bastion_host_sg
-#   ]
-# }
-
 resource "aws_security_group" "db_movie_sg" {
   name        = "db_movie_sg"
   description = "Securtiy group for MySQL Database"

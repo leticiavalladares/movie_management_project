@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# INSTALL GIT AND MYSQL   sudo yum install git -y (red hat)
+# INSTALL GIT AND MYSQL
 sudo apt-get update
 sudo apt-get install git mysql-client -y
 sudo apt-get install \
@@ -15,7 +15,7 @@ sudo apt-get install \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install docker.io -y
-git clone --branch dev https://github.com/leticiavalladares/movie_management_project/ ~/movie_management_project
+git clone --branch dev https://github.com/leticiavalladares/movie_management_project.git ~/movie_management_project
 cd ~/movie_management_project/app
 sudo docker build -t movie-mgmt .
 
