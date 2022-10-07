@@ -16,7 +16,7 @@ resource "aws_route_table" "rt_priv_subnet_1" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.ig_vpc.id
+    gateway_id = aws_nat_gateway.nat_vpc.id
   }
 
   tags = {
@@ -29,7 +29,7 @@ resource "aws_route_table" "rt_priv_subnet_2" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.ig_vpc.id
+    gateway_id = aws_nat_gateway.nat_vpc.id
   }
 
   tags = {
