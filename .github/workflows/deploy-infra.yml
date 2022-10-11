@@ -1,4 +1,4 @@
-name: Terraform deployment for VPC
+name: Terraform deployment for movie
 on: [push]
 jobs:
   terraform:
@@ -25,6 +25,6 @@ jobs:
         run: terraform init
         working-directory: ./infrastructure
 
-     - name: Terraform apply
-       run: terraform apply -auto-approve
-       working-directory: ./infrastructure
+      - name: Terraform apply
+        run: terraform apply -auto-approve
+        working-directory: ./infrastructure
