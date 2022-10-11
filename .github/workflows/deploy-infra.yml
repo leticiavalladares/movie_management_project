@@ -1,7 +1,7 @@
 name: Terraform deployment for VPC
 on: [push]
 jobs:
-  terraform-deployment:
+  terraform:
     runs-on: ubuntu-latest
     permissions:
       packages: write
