@@ -29,6 +29,10 @@ resource "aws_security_group" "bastion_host_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  tags = {
+    Name = "bastion-sg"
+  }
+
   depends_on = [
     aws_vpc.vpc,
     aws_subnet.priv_subnet_1,
