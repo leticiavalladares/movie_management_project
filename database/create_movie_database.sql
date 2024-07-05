@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS movie_db;
 CREATE DATABASE movie_db; 
 
 -- Select database
-USE movie_db;
+USE movie_db; -- USE ship;
 
 -- Create table
 CREATE TABLE directors_tbl(
