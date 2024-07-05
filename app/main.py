@@ -1,16 +1,21 @@
 from flask import Flask, render_template, send_from_directory, request
 from flask_mysqldb import MySQL
 import json
+import requests
 
 # Instanciating class Flask from the flask module
 app = Flask("MovieApp")
 
+app.config.from_pyfile("config.py")
+
+url = app.config["SECOND_CONTAINER_URL"]
+
 # THIS IS JUST FOR LEARNING PURPOSES
 # DO NOT PUBLISH SENSITIVE INFORMATION
-app.config["MYSQL_HOST"]     = "ENDPOINT_PLACEHOLDER"
-app.config["MYSQL_USER"]     = "root"
-app.config["MYSQL_PASSWORD"] = "PASSWORD_PLACEHOLDER"
-app.config["MYSQL_DB"]       = "movie_db"
+#app.config["MYSQL_HOST"]     = <HERE_GOES_THE_HOST>
+#app.config["MYSQL_USER"]     = <HERE_GOES_THE_USER>
+#app.config["MYSQL_PASSWORD"] = <HERE_GOES_THE_PASSWORD>
+#app.config["MYSQL_DB"]       = <HERE_GOES_THE_DATABASE>
 
 mysql = MySQL(app)
 
@@ -171,6 +176,11 @@ def add_new_actor():
     mysql.connection.commit()
     cursor.close()
     return list_actor_table()
+
+@app.route('/second-container/', methods=['GET'])
+def get_second_container():
+    return requests.get(url).content
+    
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1")
